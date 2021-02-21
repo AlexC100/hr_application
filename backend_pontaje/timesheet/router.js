@@ -10,16 +10,16 @@ router.get('/', function(req, res) {
 });
 
 //Import Bio Controller
-var employeeController = require('./employeeController');
+var timesheetController = require('./timesheetController');
 
 // Bio routes
-router.route('/employee')
-    .get(employeeController.index)
-    .post(employeeController.add);
-router.route('/employee/:employee_id')
-    .get(employeeController.view)
-    .put(employeeController.update)
-    .delete(employeeController.delete);
+router.route('/timesheet')
+    .get(timesheetController.index)
+    .post(timesheetController.add);
+router.route('/timesheet/:timesheet_id')
+    .get(timesheetController.view)
+    .put(timesheetController.update)
+    .delete(timesheetController.delete);
     
 //Export API routes
 module.exports = router;

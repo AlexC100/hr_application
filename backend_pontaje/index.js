@@ -38,7 +38,7 @@ mongo.then(() => {
 
 
 //Import routes
-let apiRoutes = require("./employee/router")
+let apiRoutes = require("./timesheet/router")
 
 //Use API routes in the App
 app.use('/api', apiRoutes);

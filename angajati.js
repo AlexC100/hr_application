@@ -9,3 +9,15 @@ const phone = document.querySelector('#phone');
 const email = document.querySelector('#email');
 const paysTax = document.querySelector('#pays-tax');
 const submitBtn = document.querySelector('#submit');
+
+
+
+// ag-Grid table setup
+
+// Listen for click event on submit
+submitBtn.addEventListener('click', function(e) {
+
+
+
+  e.preventDefault();
+});
