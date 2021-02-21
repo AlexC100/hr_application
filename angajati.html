@@ -5,6 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ag-Grid JS -->
+  <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+  
+  <!-- ag-Grid CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
@@ -104,7 +111,8 @@
     </div>
   </div>
 
-  <div class="container-fluid">
+  <!-- Custom Table -->
+  <!-- <div class="container-fluid">
     <table class="table text-center">
       <thead>
         <tr>
@@ -120,6 +128,11 @@
       </thead>
       <tbody class="list"></tbody>
     </table>
+  </div> -->
+
+  <!-- ag-Grid Table -->
+  <div class="container-fluid">
+    <div id="myGrid" class="ag-theme-alpine" style="height:600px; width:500px"></div>
   </div>
 
   <!-- Bootstrap JS -->
