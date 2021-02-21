@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+  <title>HR Application | Modul Salarii</title>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-dark bg-info">
+    <span class="navbar-brand mb-0 h1">HR Application</span>
+    <div>
+      <a href="angajati.html" class="text-white">Angajati</a>
+      <a href="salarii.html" class="text-white mx-3">Salarii</a>
+      <a href="pontaje.html" class="text-white">Pontaje</a>
+    </div>
+  </nav>
+
+  <div class="container-md card my-5 px-5 pb-5">
+    <div class="row">
+      <div class="col-12 text-center py-5 px-3">
+        <h1 class="mb-5">Modul Angajati</h1>
+        <!-- Employee Form -->
+        <form>
+          <div class="col d-lg-flex mb-4">
+            <div class="input-group mb-3 mr-5">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Prenume<sup class="text-danger">*</sup></span>
+              </div>
+              <input type="text" id="first-name" class="form-control" aria-label="employee" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Nume<sup class="text-danger">*</sup></span>
+              </div>
+              <input type="text" id="last-name" class="form-control" aria-label="employee" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="col d-lg-flex mb-4">
+            <div class="input-group mb-3 mr-5">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Vechime<sup class="text-danger">*</sup></span>
+              </div>
+              <input type="number" id="job-years" class="form-control" aria-label="employee" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Salariul<sup class="text-danger">*</sup></span>
+              </div>
+              <input type="number" id="salary" class="form-control" aria-label="employee" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="col d-lg-flex mb-4">
+            <div class="input-group mb-3 mr-5">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Functie<sup class="text-danger">*</sup></span>
+              </div>
+              <input type="text" id="position" class="form-control" aria-label="employee" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Echipa<sup class="text-danger">*</sup></span>
+              </div>
+              <input type="text" id="team" class="form-control" aria-label="employee" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="col d-lg-flex mb-4">
+            <div class="input-group mb-3 mr-5">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Telefon<sup class="text-danger">*</sup></span>
+              </div>
+              <input type="text" id="phone" class="form-control" aria-label="employee" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">E-mail<sup class="text-danger">*</sup></span>
+              </div>
+              <input type="email" id="email" class="form-control" aria-label="employee" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="col mb-5 w-50 mx-auto">
+            <div class="input-group mx-auto">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="checkbox" id="pays-tax" aria-label="Checkbox for following text input">
+                </div>
+              </div>
+              <input type="text" class="form-control" value="Scutit de Impozit" aria-label="Text input with checkbox" disabled>
+            </div>
+            <sub class="mx-auto">* Selecteaza doar daca salariul este scutit de impozit</sub>
+          </div>
+
+          <div class="col w-50 mx-auto">
+            <button id="submit" type="submit" class="btn btn-info w-100">Adauga Angajat</button>
+          </div>
+      </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th scope="col">Nume</th>
+          <th scope="col">Vechime</th>
+          <th scope="col">Salariul</th>
+          <th scope="col">Functie</th>
+          <th scope="col">Echipa</th>
+          <th scope="col">Telefon</th>
+          <th scope="col">Email</th>
+          <th scope="col">Impozit</th>
+        </tr>
+      </thead>
+      <tbody class="list"></tbody>
+    </table>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+  <!-- Axios JS -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="angajati.js"></script>
+
+</body>
+</html>

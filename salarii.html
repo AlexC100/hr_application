@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+  <title>HR Application | Modul Salarii</title>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-dark bg-info">
+    <span class="navbar-brand mb-0 h1">HR Application</span>
+    <div>
+      <a href="angajati.html" class="text-white">Angajati</a>
+      <a href="salarii.html" class="text-white mx-3">Salarii</a>
+      <a href="pontaje.html" class="text-white">Pontaje</a>
+    </div>
+  </nav>
+
+  <div class="container-md card my-5 px-5 pb-5">
+    <h1 class="text-center my-5">Modul Salarii</h1>
+    <div id="alert-message" class="alert d-none w-75 mx-auto text-center"></div>
+    <div class="row">
+      <!-- Calculate Salary -->
+      <div class="col-md-6 text-center px-4">
+        <h2 class="mb-4">Calculator Salariu</h2>
+        <form>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Salariul<sup class="text-danger">*</sup></span>
+            </div>
+            <input type="number" id="salary-input" class="form-control" aria-label="salary" aria-describedby="basic-addon1">
+          </div>
+          
+          <!-- Salary type -->
+          <div class="mb-4">
+            <p class="mb-1">Selectati tipul de salariu<sup class="text-danger">*</sup></p>
+            <div class="mx-auto d-flex justify-content-center w-75">
+              <div class="input-group w-50 mx-1">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="before-taxes" name="salary-type" aria-label="Radio button for following text input">
+                  </div>
+                </div>
+                <input type="text" class="form-control" value="Brut" aria-label="Text input with radio button" disabled>
+              </div>
+              <div class="input-group w-50 mx-1">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="after-taxes" name="salary-type" aria-label="Radio button for following text input">
+                  </div>
+                </div>
+                <input type="text" class="form-control" value="Net" aria-label="Text input with radio button" disabled>
+              </div>
+            </div>
+          </div>
+
+          <!-- Taxes -->
+          <div class="input-group mx-auto">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" id="pays-tax" aria-label="Checkbox for following text input">
+              </div>
+            </div>
+            <input type="text" class="form-control" value="Scutit de Impozit" aria-label="Text input with checkbox" disabled>
+          </div>
+          <sub class="mx-auto">* Selecteaza doar daca salariul este scutit de impozit</sub>
+
+          <!-- Submit button -->
+          <button id="calculate-salary" class="btn btn-info w-75 mt-4">Calculeaza</button>
+        </form>
+      </div>
+        
+      <!-- Calculate Employee Salary -->
+      <div class="col-md-6 text-center px-4">
+        <h2 class="mb-4">Calculator Angajati</h2>
+        <div>
+          <select id="select-employee" class="border bodder-secondary rounded px-4 py-2 w-100 mt-3 mb-5"></select>
+
+          <div class="input-group mb-5">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Noul Salariu</span>
+            </div>
+            <input type="number" id="new-salary-input" class="form-control" aria-label="salary" aria-describedby="basic-addon1">
+          </div>
+
+          <button id="change-employee-salary" class="btn btn-info w-75">Modifica Salariu Angajat</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <table class="text-center table">
+          <thead>
+            <tr>
+              <th scope="col">Nume</th>
+              <th scope="col">Salariu Brut</th>
+              <th scope="col">CAS</th>
+              <th scope="col">CASS</th>
+              <th scope="col">Impozit</th>
+              <th scope="col">Salariu Net</th>
+            </tr>
+          </thead>
+          <tbody id="list"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+  <!-- Axios JS -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="salarii.js"></script>
+
+</body>
+</html>
