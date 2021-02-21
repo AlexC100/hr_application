@@ -1,4 +1,5 @@
 // UI Variables
+const alertMessage = document.querySelector('#alert-message');
 const firstName = document.querySelector('#first-name');
 const lastName = document.querySelector('#last-name');
 const jobYears = document.querySelector('#job-years');
@@ -10,29 +11,37 @@ const email = document.querySelector('#email');
 const paysTax = document.querySelector('#pays-tax');
 const submitBtn = document.querySelector('#submit');
 
-let dbEmployees = [];
 // Get data from database
-axios.get('http://localhost:3000/api/employee/')
-  .then(res => res.data.data)
-  .catch(err => console.log(err))
-  .then(data => {
-    dbEmployees = data;
-
-    data.forEach(function(employee) {
-      rowData.push({
-        nume: `${employee.name.firstName} ${employee.name.lastName}`,
-        vechime: employee.jobYears,
-        salariu: employee.salary,
-        functie: `${employee.position}`,
-        echipa: `${employee.team}`,
-        telefon: `${employee.phone}`,
-        email: `${employee.email}`,
-        impozit: employee.paysTax
+function populateList() {
+  axios.get('http://localhost:3000/api/employee/')
+    .then(res => res.data.data)
+    .catch(err => console.log(err))
+    .then(data => {
+      
+      let tax;
+      data.forEach(function(employee) {
+        if(employee.paysTax === true) {
+          tax = 'NU';
+        } else {
+          tax = 'DA';
+        }
+        rowData.push({
+          nume: `${employee.name.firstName} ${employee.name.lastName}`,
+          vechime: employee.jobYears,
+          salariu: employee.salary,
+          functie: `${employee.position}`,
+          echipa: `${employee.team}`,
+          telefon: `${employee.phone}`,
+          email: `${employee.email}`,
+          impozit: tax
+        });
       });
+      gridOptions.api.setRowData(gridOptions.rowData);
     });
+}
 
-    gridOptions.api.setRowData(gridOptions.rowData);
-  })
+// Populate list on load
+populateList();
 
 //// ag-Grid table setup ////
 // Specify columns for the table
@@ -62,6 +71,7 @@ const eGridDiv = document.querySelector('#myGrid');
 // Create the grid passing in the div to use together with the columns & data we want to use
 new agGrid.Grid(eGridDiv, gridOptions);
 
+// Set paysTax to boolean
 function tax() {
   if(paysTax.checked) {
     return true;
@@ -70,32 +80,66 @@ function tax() {
   }
 }
 
-// Get new employee
-function addNewEmployee() {
-
+// Get new employee to database
+function addEmployeeToDb() {
   const newEmployee = {
-    nume: {
+    name: {
       firstName: `${firstName.value}`,
       lastName: `${lastName.value}`
     },
-    vechime: parseInt(jobYears.value),
-    salariu: parseInt(salary.value),
-    functie: `${position.value}`,
-    echipa: `${team.value}`,
-    telefon: `${phone.value}`,
+    jobYears: parseInt(jobYears.value),
+    salary: parseInt(salary.value),
+    position: `${position.value}`,
+    team: `${team.value}`,
+    phone: `${phone.value}`,
     email: `${email.value}`,
-    impozit: tax()
+    paysTax: tax()
   }
 
   axios.post('http://localhost:3000/api/employee/', newEmployee)
-    .then(res => res)
+    .then(res => {
+      populateList();
+    })
     .catch(err => console.log(err))
-  
 }
+
+// Clear fields after success
+function clearFields() {
+  firstName.value = '';
+  lastName.value = '';
+  jobYears.value = '';
+  salary.value = '';
+  position.value = '';
+  team.value = '';
+  phone.value = '';
+  email.value = '';
+  paysTax.checked = false;
+}
+
+// Show alert on event
+function displayAlert(message, className) {
+  alertMessage.classList.add(className);
+  alertMessage.textContent = message;
+  alertMessage.classList.remove('d-none');
+  setTimeout(function() {
+    alertMessage.classList.remove(className);
+    alertMessage.text = message;
+    alertMessage.classList.add('d-none'); 
+  }, 3000);
+}
+
 // Listen for click event on submit
 submitBtn.addEventListener('click', function(e) {
+  if(firstName.value === '' || lastName.value === '' || jobYears.value === '' || salary.value === '' || position.value === '' || team.value === '' || phone.value === '' || email.value === '') {
 
-  addNewEmployee();
+    displayAlert('Completeaza toate campurile obligatorii!', 'alert-danger');
 
+  } else {
+
+    addEmployeeToDb();
+
+    displayAlert('Angajat adaugat cu succes!', 'alert-success'); 
+
+  }
   e.preventDefault();
 });
