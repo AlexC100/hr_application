@@ -1,82 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
 
-  <title>HR Application | Modul Salarii</title>
-</head>
-<body>
-  <!-- Navigation Bar -->
-  <nav class="navbar navbar-dark bg-info">
-    <span class="navbar-brand mb-0 h1">HR Application</span>
-    <div>
-      <a href="angajati.html" class="text-white">Angajati</a>
-      <a href="salarii.html" class="text-white mx-3">Salarii</a>
-      <a href="pontaje.html" class="text-white">Pontaje</a>
-    </div>
-  </nav>
+    <title>HR Application | Modul Salarii</title>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark bg-info">
+      <span class="navbar-brand mb-0 h1">HR Application</span>
+      <div>
+        <a href="angajati.html" class="text-white">Angajati</a>
+        <a href="salarii.html" class="text-white mx-3">Salarii</a>
+        <a href="pontaje.html" class="text-white">Pontaje</a>
+      </div>
+    </nav>
 
-  <div class="container card my-5 px-5 pb-5">
-    <h1 class="text-center my-5">Modul Pontaje</h1>
-    <div id="alert-message" class="alert d-none w-75 mx-auto text-center"></div>
-    <div class="row">
-      <div class="col-lg-6 mx-auto text-center px-4">
-        <form>
+    <div class="container card my-5 px-5 pb-5">
+      <h1 class="text-center my-5">Modul Pontaje</h1>
+      <div
+        id="alert-message"
+        class="alert d-none w-75 mx-auto text-center"
+      ></div>
+      <div class="row">
+        <div class="col-lg-6 mx-auto text-center px-4">
+          <form>
+            <select
+              id="select-employee"
+              class="border bodder-secondary rounded px-4 py-2 w-100 mt-3 mb-5"
+            ></select>
 
-          <select id="select-employee" class="border bodder-secondary rounded px-4 py-2 w-100 mt-3 mb-5"></select>
-
-          <div class="input-group mb-5">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Ore Lucrate<sup class="text-danger">*</sup></span>
+            <div class="input-group mb-5">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  >Ore Lucrate<sup class="text-danger">*</sup></span
+                >
+              </div>
+              <input
+                type="number"
+                id="hours-input"
+                class="form-control"
+                aria-label="timesheet"
+                aria-describedby="basic-addon1"
+              />
             </div>
-            <input type="number" id="hours-input" class="form-control" aria-label="timesheet" aria-describedby="basic-addon1">
-          </div>
 
-          <div class="input-group mb-5">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Data<sup class="text-danger">*</sup></span>
+            <div class="input-group mb-5">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  >Data<sup class="text-danger">*</sup></span
+                >
+              </div>
+              <input
+                type="date"
+                id="date-input"
+                class="form-control"
+                aria-label="timesheet"
+                aria-describedby="basic-addon1"
+              />
             </div>
-            <input type="date" id="date-input" class="form-control" aria-label="timesheet" aria-describedby="basic-addon1">
-          </div>
 
-          <button id="add-timesheet" class="btn btn-info w-75">Ponteaza Angajat</button>
-
-        </form>
+            <button id="add-timesheet" class="btn btn-info w-75">
+              Ponteaza Angajat
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Table Section -->
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <table class="text-center table">
-          <thead>
-            <tr>
-              <th scope="col">Nume</th>
-              <th scope="col">Data</th>
-              <th scope="col">Ore Lucrate</th>
-            </tr>
-          </thead>
-          <tbody id="list"></tbody>
-        </table>
+    <!-- Table Section -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <table class="text-center table">
+            <thead>
+              <tr>
+                <th scope="col">Nume</th>
+                <th scope="col">Data</th>
+                <th scope="col">Ore Lucrate</th>
+              </tr>
+            </thead>
+            <tbody id="list"></tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Axios JS -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Axios JS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <!-- Custom JS -->
-  <script src="pontaje.js"></script>
-</body>
+    <!-- Custom JS -->
+    <script src="pontaje.js"></script>
+  </body>
 </html>

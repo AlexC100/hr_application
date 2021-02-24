@@ -1,28 +1,28 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 //schema
 var timesheetSchema = mongoose.Schema({
   hours: {
     type: Number,
-    required: true
+    required: true,
   },
   date: {
     type: String,
-    required: true
+    required: true,
   },
   employee: {
     type: String,
-    required: true
+    required: true,
   },
   created_at: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 // Export Bio Model
-var Timesheet = module.exports = mongoose.model('timesheet', timesheetSchema);
+var Timesheet = (module.exports = mongoose.model("timesheet", timesheetSchema));
 
 module.exports.get = function (callback, limit) {
-   Timesheet.find(callback).limit(limit); 
-}
+  Timesheet.find(callback).limit(limit);
+};
